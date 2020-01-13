@@ -26,6 +26,8 @@ import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import java.io.*;
+
 public class Controller implements Initializable {
 
     @FXML
@@ -49,6 +51,10 @@ public class Controller implements Initializable {
     DataInputStream in;
     DataOutputStream out;
 
+    private File history = new File("history.log");
+    private Writer historyWriter;
+    private BufferedReader historyReader;
+
     final String IP_ADRESS = "localhost";
     final int PORT = 8189;
 
@@ -65,6 +71,37 @@ public class Controller implements Initializable {
         clientList.setManaged(isAuthenticated);
         if (!isAuthenticated) {
             nickname = "";
+        }
+    }
+
+    // Запись лога
+    private void appendLog(String txt) {
+        try {
+            if (history.exists()) {
+                historyWriter = new FileWriter(history.getName(), true);
+                historyWriter.write(txt + "\n");
+                historyWriter.close();
+            } else {
+                System.out.println("Ошибка лога. Лог не создан.");
+            }
+
+            readLog();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void readLog() {
+        try {
+            textArea.setText("");
+            historyReader = new BufferedReader(new FileReader(history.getName()));
+            String line = "";
+            while (null != (line = historyReader.readLine())) {
+                textArea.appendText(line + "\n");
+            }
+            historyReader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -117,7 +154,21 @@ public class Controller implements Initializable {
                             throw new RuntimeException("отключаемся");
                         }
  ////////////////
+
+                        if (!history.exists()) {
+                            try{
+                                if(history.createNewFile()) {
+                                    System.out.println("Лог создан успешно.");
+                                } else {
+                                    System.out.println("Ошибка лога. Лог не создан.");
+                                }
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
                         textArea.appendText(str + "\n");
+                        appendLog(str);
                     }
 
                     setTitle("Chat : " + nickname);
@@ -143,7 +194,9 @@ public class Controller implements Initializable {
                             }
 
                         } else {
+
                             textArea.appendText(str + "\n");
+                            appendLog(str);
                         }
                     }
                 } catch (RuntimeException e) {
