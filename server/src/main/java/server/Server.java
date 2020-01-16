@@ -4,8 +4,13 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Vector;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Server {
+
+    private static final int USERS_CHAT = 10;
+    private ExecutorService executorService = Executors.newFixedThreadPool(USERS_CHAT);
     private Vector<ClientHandler> clients;
     private AuthService authService;
 
@@ -31,7 +36,7 @@ public class Server {
             while (true) {
                 socket = server.accept();
                 System.out.println("Клиент подключился");
-                new ClientHandler(this, socket);
+                new ClientHandler(this, socket, executorService);
             }
 
         } catch (IOException e) {

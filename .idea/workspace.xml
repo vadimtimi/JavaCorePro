@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e985f6c1-d010-4951-ac4b-b0b9bfe9cac4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/abcabcabc/abcabcabc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/abcabcabc/src/abcabcabc/man_abc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/abcabcabc/abcabcabc/man_abc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/abcabcabc/abcabcabc/man_abc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/ClientHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/server/Server.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
