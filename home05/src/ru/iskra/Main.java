@@ -23,7 +23,7 @@ public class Main {
         }
         executorService.shutdown();
         try {
-            Car.getStartCountDown().await();
+            Car.getStartPos().await();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (BrokenBarrierException e) {
@@ -45,7 +45,7 @@ class Car implements Runnable {
         CARS_COUNT = 0;
     }
 
-    public static CyclicBarrier getStartCountDown() {
+    public static CyclicBarrier getStartPos() {
         return startPos;
     }
 
