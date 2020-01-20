@@ -1,14 +1,12 @@
 package ru.iskra;
-//
-//public class Main {
-//
-//    public static void main(String[] args) {
-//	// write your code here
-//    }
-//}
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
     public static final int CARS_COUNT = 4;
@@ -19,18 +17,38 @@ public class Main {
         for (int i = 0; i < cars.length; i++) {
             cars[i] = new Car(race, 20 + (int) (Math.random() * 10));
         }
+        ExecutorService executorService = Executors.newFixedThreadPool(CARS_COUNT);
         for (int i = 0; i < cars.length; i++) {
-            new Thread(cars[i]).start();
+            executorService.execute(cars[i]);
+        }
+        executorService.shutdown();
+        try {
+            Car.getStartCountDown().await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (BrokenBarrierException e) {
+            e.printStackTrace();
         }
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка началась!!!");
+
+        while (!executorService.isTerminated());
         System.out.println("ВАЖНОЕ ОБЪЯВЛЕНИЕ >>> Гонка закончилась!!!");
     }
 }
+
 class Car implements Runnable {
+    private static ReentrantLock rLock = new ReentrantLock();
+    private static CyclicBarrier startPos= new CyclicBarrier(Main.CARS_COUNT + 1);
     private static int CARS_COUNT;
+    private static boolean winner = false;
     static {
         CARS_COUNT = 0;
     }
+
+    public static CyclicBarrier getStartCountDown() {
+        return startPos;
+    }
+
     private Race race;
     private int speed;
     private String name;
@@ -52,14 +70,23 @@ class Car implements Runnable {
             System.out.println(this.name + " готовится");
             Thread.sleep(500 + (int)(Math.random() * 800));
             System.out.println(this.name + " готов");
+            startPos.await();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         for (int i = 0; i < race.getStages().size(); i++) {
             race.getStages().get(i).go(this);
         }
+        rLock.lock();
+        if (!winner){
+            System.out.println(this.name + " - ПОБЕДИТЕЛЬ");
+            winner = true;
+        }
+        rLock.unlock();
     }
 }
+
 abstract class Stage {
     protected int length;
     protected String description;
@@ -71,7 +98,7 @@ abstract class Stage {
 class Road extends Stage {
     public Road(int length) {
         this.length = length;
-        this.description = "Дорога 123" + length + " метров";
+        this.description = "Дорога " + length + " метров";
     }
     @Override
     public void go(Car c) {
