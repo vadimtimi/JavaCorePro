@@ -34,13 +34,14 @@ public class Utils {
     }
 
     /* Написать метод, который проверяет состав массива из чисел 1 и 4. Если в нем нет хоть одной четверки или единицы, то метод вернет false */
-    boolean is1and2(int[] arr) {
+    public boolean is1and2(int[] arr) {
         boolean is1 = false;
         boolean is4 = false;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == 1) is1 = true;
             if (arr[i] == 4) is4 = true;
         }
-        return ( is1 || is4 );
+        boolean res = ( is1 && is4 );
+        return res;
     }
 }

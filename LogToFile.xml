@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-01-22T09:11:48.894069800Z</date>
+  <millis>1579684308894</millis>
+  <nanos>69800</nanos>
+  <sequence>0</sequence>
+  <logger>LogApp</logger>
+  <level>INFO</level>
+  <class>ru.iskra.H03.server.src.main.java.server.Start</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>A message logged to the file</message>
+</record>
+<record>
+  <date>2020-01-22T09:11:48.974325300Z</date>
+  <millis>1579684308974</millis>
+  <nanos>325300</nanos>
+  <sequence>1</sequence>
+  <logger>LogApp</logger>
+  <level>INFO</level>
+  <class>ru.iskra.H03.server.src.main.java.server.Start</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Start - Server</message>
+</record>
+</log>
