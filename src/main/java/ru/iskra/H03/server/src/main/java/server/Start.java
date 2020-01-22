@@ -1,4 +1,4 @@
-package ru.iskra.H03.H03.server.src.main.java.server;
+package ru.iskra.H03.server.src.main.java.server;
 
 import java.util.logging.FileHandler;
 import java.util.logging.*;

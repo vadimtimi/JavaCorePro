@@ -2,21 +2,21 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2020-01-22T09:11:48.894069800Z</date>
-  <millis>1579684308894</millis>
-  <nanos>69800</nanos>
+  <date>2020-01-22T10:18:26.712178600Z</date>
+  <millis>1579688306712</millis>
+  <nanos>178600</nanos>
   <sequence>0</sequence>
   <logger>LogApp</logger>
   <level>INFO</level>
   <class>ru.iskra.H03.server.src.main.java.server.Start</class>
   <method>main</method>
   <thread>1</thread>
-  <message>A message logged to the file</message>
+  <message>Start - Log</message>
 </record>
 <record>
-  <date>2020-01-22T09:11:48.974325300Z</date>
-  <millis>1579684308974</millis>
-  <nanos>325300</nanos>
+  <date>2020-01-22T10:18:26.811930700Z</date>
+  <millis>1579688306811</millis>
+  <nanos>930700</nanos>
   <sequence>1</sequence>
   <logger>LogApp</logger>
   <level>INFO</level>
@@ -24,5 +24,17 @@
   <method>main</method>
   <thread>1</thread>
   <message>Start - Server</message>
+</record>
+<record>
+  <date>2020-01-22T10:23:26.432620100Z</date>
+  <millis>1579688606432</millis>
+  <nanos>620100</nanos>
+  <sequence>2</sequence>
+  <logger>LogApp</logger>
+  <level>SEVERE</level>
+  <class>ru.iskra.H03.server.src.main.java.server.Start</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Не удалось подключиться к БД</message>
 </record>
 </log>
