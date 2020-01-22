@@ -1,5 +1,5 @@
 //package server;
-package ru.iskra.H03.server.src.main.java.server;
+package ru.iskra.H03.H03.server.src.main.java.server;
 
 public interface AuthService {
     String getNicknameByLoginAndPassword(String login, String password);
